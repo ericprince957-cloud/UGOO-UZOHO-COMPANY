@@ -34,7 +34,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gold-400 font-semibold mb-4">Contact Us</h4>
             <div className="space-y-2 text-sm text-gray-400">
-              <p>No. 244 Old Aba Road (Town Hall),</p>
+              <p>No. 244 Old Aba Road (Opp. Town Hall),</p>
               <p>Oyigbo, Port Harcourt,</p>
               <p>Rivers State, Nigeria</p>
               <p className="pt-2">

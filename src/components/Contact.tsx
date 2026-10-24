@@ -32,7 +32,7 @@ export default function Contact() {
                 <div className="ml-4">
                   <h3 className="text-gold-400 font-semibold mb-1 text-sm sm:text-base">Office Address</h3>
                   <p className="text-gray-300 text-sm sm:text-base">
-                    No. 244 Old Aba Road (Town Hall), Oyigbo, Port Harcourt, Rivers State, Nigeria.
+                    No. 244 Old Aba Road (Opp. Town Hall), Oyigbo, Port Harcourt, Rivers State, Nigeria.
                   </p>
                 </div>
               </div>

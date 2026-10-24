@@ -7,10 +7,10 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-gold-500/30 bg-gold-500/5 mb-4">
-            <span className="text-xs text-gold-400 tracking-wider uppercase">Get In Touch</span>
+            <span className="text-xs text-gold-400 tracking-wider uppercase">Visit Our Office</span>
           </div>
           <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold gold-gradient mb-4">
-            Contact And Location
+            CONTACT AND LOCATION
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
             Should you decide to discuss your legal and other needs with us? Reach out to us through any of the channels below.
@@ -105,17 +105,39 @@ export default function Contact() {
           <div className="relative gpu-accelerated">
             <div className="bg-[#111111] rounded-xl overflow-hidden border border-gold-800/20 h-full min-h-[300px] sm:min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.5!2d7.05!3d4.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNTInMTIuMCJOIDfCsDAzJzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
+                src="https://maps.google.com/maps?q=No.%20244%20Old%20Aba%20Road%20%28Town%20Hall%29%2C%20Oyigbo%2C%20Port%20Harcourt%2C%20Rivers%20State%2C%20Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '300px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="UGOO UZOHO & COMPANY Office Location"
+                title="UGOO UZOHO + COMPANY Office Location"
                 className="grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
+            {/* QR Code — links to office location on Google Maps */}
+            <a
+              href="https://maps.app.goo.gl/JfU2n7RsZRERBX4z9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-4 left-4 flex items-center bg-[#111111]/95 border border-gold-500/30 rounded-lg px-3 py-2 shadow-lg hover:border-gold-400 transition-colors touch-target"
+              title="Scan to open our office location in Google Maps"
+            >
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fmaps.app.goo.gl%2FJfU2n7RsZRERBX4z9"
+                alt="QR code — office location on Google Maps"
+                width={56}
+                height={56}
+                loading="lazy"
+                decoding="async"
+                className="rounded"
+              />
+              <span className="ml-3 text-[11px] leading-tight text-gray-300">
+                Scan to find us
+                <span className="block text-gold-400 font-semibold">on Google Maps</span>
+              </span>
+            </a>
             <a
               href="https://maps.app.goo.gl/JfU2n7RsZRERBX4z9"
               target="_blank"

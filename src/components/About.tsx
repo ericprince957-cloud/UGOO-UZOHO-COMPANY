@@ -32,7 +32,7 @@ export default function About() {
             <h2 className="font-playfair text-2xl sm:text-4xl font-bold text-white mb-2">
               Ugochukwu Emeka Uzoho
             </h2>
-            <p className="text-gold-400 text-sm mb-2 italic">(aka ugoo uzoho)</p>
+            <p className="text-gold-400 text-sm mb-2 italic">(aka Ugoo Uzoho)</p>
             <p className="text-gold-300 text-sm font-medium mb-6 border-l-2 border-gold-500 pl-3">
               Called to Nigerian Bar in December 1993. Active and uninterrupted Law Practice since.
             </p>

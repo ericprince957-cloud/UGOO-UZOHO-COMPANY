@@ -47,8 +47,8 @@ export default function PracticeAreas() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {/* Grid — 2 columns on mobile, 3–4 on larger screens */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {displayedAreas.map((area, index) => (
             <div
               key={index}

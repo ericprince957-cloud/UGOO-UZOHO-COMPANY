@@ -105,7 +105,7 @@ export default function Contact() {
           <div className="relative gpu-accelerated">
             <div className="bg-[#111111] rounded-xl overflow-hidden border border-gold-800/20 h-full min-h-[300px] sm:min-h-[400px]">
               <iframe
-                src="https://maps.google.com/maps?q=No.%20244%20Old%20Aba%20Road%20%28Town%20Hall%29%2C%20Oyigbo%2C%20Port%20Harcourt%2C%20Rivers%20State%2C%20Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Rex%20Chambers%2C%20Suit%203%2C%20Salem%20Plaza%2C%20No.%20244%20Old%20Aba%20Road%20%28Town%20Hall%29%2C%20Oyigbo%2C%20Port%20Harcourt%2C%20Rivers%20State%2C%20Nigeria&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '300px' }}
@@ -118,14 +118,14 @@ export default function Contact() {
             </div>
             {/* QR Code — links to office location on Google Maps */}
             <a
-              href="https://maps.app.goo.gl/JfU2n7RsZRERBX4z9"
+              href="https://maps.app.goo.gl/SNV5vJs5NsnXh3Vg8"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute top-4 left-4 flex items-center bg-[#111111]/95 border border-gold-500/30 rounded-lg px-3 py-2 shadow-lg hover:border-gold-400 transition-colors touch-target"
               title="Scan to open our office location in Google Maps"
             >
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fmaps.app.goo.gl%2FJfU2n7RsZRERBX4z9"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fmaps.app.goo.gl%2FSNV5vJs5NsnXh3Vg8"
                 alt="QR code — office location on Google Maps"
                 width={56}
                 height={56}
@@ -139,7 +139,7 @@ export default function Contact() {
               </span>
             </a>
             <a
-              href="https://maps.app.goo.gl/JfU2n7RsZRERBX4z9"
+              href="https://maps.app.goo.gl/SNV5vJs5NsnXh3Vg8"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-4 right-4 inline-flex items-center px-4 py-2 bg-gold-500 text-black font-semibold text-sm rounded-lg hover:bg-gold-400 transition-colors shadow-lg touch-target"

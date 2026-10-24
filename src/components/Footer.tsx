@@ -7,11 +7,12 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
-            <img
-              src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/0f43f163-1874-47a7-b777-212967e9c8ae.png"
-              alt="UGOO UZOHO & COMPANY"
-              className="h-10 sm:h-12 w-auto object-contain mb-4"
-            />
+            <h3 className="font-playfair text-lg sm:text-xl font-bold gold-gradient mb-2">
+              UGOO UZOHO + COMPANY
+            </h3>
+            <p className="text-gold-400 text-xs tracking-widest uppercase mb-4">
+              Barristers and Solicitors
+            </p>
             <p className="text-gray-500 text-sm leading-relaxed">
               Trusted legal excellence delivered with integrity. Operating in Oyigbo, Port Harcourt, and all over Nigeria since 1993.
             </p>

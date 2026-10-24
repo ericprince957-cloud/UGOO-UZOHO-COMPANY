@@ -10,7 +10,7 @@ export default function Footer() {
             <img
               src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/0f43f163-1874-47a7-b777-212967e9c8ae.png"
               alt="UGOO UZOHO & COMPANY"
-              className="h-14 sm:h-16 md:h-20 w-auto max-w-[200px] sm:max-w-[260px] md:max-w-[300px] object-contain mb-4"
+              className="h-10 sm:h-12 w-auto object-contain mb-4"
             />
             <p className="text-gray-500 text-sm leading-relaxed">
               Trusted legal excellence delivered with integrity. Operating in Oyigbo, Port Harcourt, and all over Nigeria since 1993.

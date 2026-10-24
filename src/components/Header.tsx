@@ -49,13 +49,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex flex-col min-w-0">
-            <span className="font-playfair text-lg sm:text-2xl font-bold tracking-wide gold-gradient truncate">
-              UGOO UZOHO + COMPANY
-            </span>
-            <span className="text-[10px] sm:text-xs text-gold-400 tracking-widest uppercase hidden sm:block">
-              Barristers and Solicitors
-            </span>
+          <Link to="/" className="flex items-center min-w-0">
+            <img
+              src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/0f43f163-1874-47a7-b777-212967e9c8ae.png"
+              alt="UGOO UZOHO & COMPANY"
+              className="h-12 sm:h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

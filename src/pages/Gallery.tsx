@@ -52,24 +52,11 @@ export default function Gallery() {
             <span className="text-xs text-gold-400 tracking-wider uppercase">Our Gallery</span>
           </div>
           <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold gold-gradient mb-4">
-            Gallery & Team
+            Gallery
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A glimpse into our firm, our work, and the moments that define our practice.
           </p>
-        </div>
-
-        {/* Team Section */}
-        <div className="mt-12 bg-[#111111] rounded-xl p-8 border border-gold-800/20 text-center">
-          <h2 className="font-playfair text-2xl font-bold text-white mb-4">Our Team</h2>
-          <div className="flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center">
-              <svg className="w-10 h-10 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-          </div>
-          <p className="text-gray-400 mt-4 text-sm">Our Team Coming Soon</p>
         </div>
       </div>
 
@@ -79,7 +66,7 @@ export default function Gallery() {
           {galleryImages.map((img, index) => (
             <div
               key={index}
-              className="masonry-item cursor-pointer group"
+              className="masonry-item cursor-pointer group gpu-accelerated"
               onClick={() => openLightbox(index)}
             >
               <div className="relative rounded-lg overflow-hidden border border-gold-800/20 hover:border-gold-500/40 transition-all duration-300">
@@ -88,6 +75,7 @@ export default function Gallery() {
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                   <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +96,7 @@ export default function Gallery() {
           {/* Close button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-2"
+            className="absolute top-4 right-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-2 touch-target"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -118,17 +106,17 @@ export default function Gallery() {
           {/* Navigation */}
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
-            className="absolute left-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-2 bg-black/50 rounded-full"
+            className="absolute left-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-3 bg-black/50 rounded-full touch-target"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
-            className="absolute right-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-2 bg-black/50 rounded-full"
+            className="absolute right-4 z-10 text-white/80 hover:text-gold-400 transition-colors p-3 bg-black/50 rounded-full touch-target"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -138,7 +126,8 @@ export default function Gallery() {
             <img
               src={galleryImages[lightboxIndex]}
               alt={`Gallery image ${lightboxIndex + 1}`}
-              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+              className="max-w-full max-h-[85vh] object-contain rounded-lg gpu-accelerated"
+              decoding="async"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full">
               <span className="text-white text-sm">{lightboxIndex + 1} / {galleryImages.length}</span>
@@ -151,7 +140,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
         <Link
           to="/"
-          className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200"
+          className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

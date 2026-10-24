@@ -1,28 +1,28 @@
 import { useState } from 'react';
 
 const practiceAreas = [
-  { title: "Company And Corporate Matters", icon: "🏢" },
-  { title: "Civil Litigations And Criminal Actions", icon: "⚖️" },
-  { title: "Labour And Trade Dispute Matters", icon: "🤝" },
-  { title: "Human Resource Development", icon: "👥" },
-  { title: "Pleadings Work", icon: "📋" },
-  { title: "Contract Drafting (Conveyances, Leases, Sales And Hire Agreements)", icon: "📝" },
-  { title: "Affidavits", icon: "📄" },
-  { title: "Demands And Collection Letters", icon: "✉️" },
-  { title: "Contract Review", icon: "🔍" },
-  { title: "Credit And Collection Management", icon: "💰" },
-  { title: "Land Dispute Management", icon: "🏠" },
-  { title: "Human Rights Defense And Enforcement", icon: "🛡️" },
-  { title: "Business Negotiations", icon: "💼" },
-  { title: "Real Estate And Management Of Properties", icon: "🏗️" },
-  { title: "Crisis Management", icon: "🚨" },
-  { title: "Legal Research", icon: "📚" },
-  { title: "Negotiations, Mediation And Lobbying", icon: "🗣️" },
-  { title: "Appellate Actions", icon: "📜" },
-  { title: "Incorporation (Companies, Associations, Clubs, Churches And Foundations)", icon: "🏛️" },
-  { title: "Updates On New Laws, Circulars, And Advisories Affecting The Business", icon: "📢" },
-  { title: "Legal Opinions", icon: "💡" },
-  { title: "Executive Errands", icon: "🎯" },
+  "Company And Corporate Matters",
+  "Civil Litigations And Criminal Actions",
+  "Labour And Trade Dispute Matters",
+  "Human Resource Development",
+  "Pleadings Work",
+  "Contract Drafting (Conveyances, Leases, Sales And Hire Agreements)",
+  "Affidavits",
+  "Demands And Collection Letters",
+  "Contract Review",
+  "Credit And Collection Management",
+  "Land Dispute Management",
+  "Human Rights Defense And Enforcement",
+  "Business Negotiations",
+  "Real Estate And Management Of Properties",
+  "Crisis Management",
+  "Legal Research",
+  "Negotiations, Mediation And Lobbying",
+  "Appellate Actions",
+  "Incorporation (Companies, Associations, Clubs, Churches And Foundations)",
+  "Updates On New Laws, Circulars, And Advisories Affecting The Business",
+  "Legal Opinions",
+  "Executive Errands",
 ];
 
 export default function PracticeAreas() {
@@ -52,12 +52,18 @@ export default function PracticeAreas() {
           {displayedAreas.map((area, index) => (
             <div
               key={index}
-              className="group bg-[#111111] rounded-xl p-5 border border-gold-800/20 hover:border-gold-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-1"
+              className="group bg-[#111111] rounded-xl p-5 border border-gold-800/20 hover:border-gold-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/5 hover:-translate-y-1 gpu-accelerated"
             >
-              <div className="text-2xl mb-3">{area.icon}</div>
-              <h3 className="text-sm font-medium text-gray-200 group-hover:text-gold-400 transition-colors leading-snug">
-                {area.title}
-              </h3>
+              <div className="flex items-start">
+                <div className="w-8 h-8 rounded bg-gold-500/10 flex items-center justify-center flex-shrink-0 mr-3 mt-0.5">
+                  <span className="text-gold-400 font-playfair text-sm font-bold">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3 className="text-sm font-medium text-gray-200 group-hover:text-gold-400 transition-colors leading-snug">
+                  {area}
+                </h3>
+              </div>
             </div>
           ))}
         </div>
@@ -67,7 +73,7 @@ export default function PracticeAreas() {
           <div className="text-center mt-8">
             <button
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200"
+              className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
             >
               <span>Show All {practiceAreas.length} Practice Areas</span>
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -38,7 +38,7 @@ export default function About() {
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
-              At UGOO UZOHO + COMPANY, our mission is to provide trusted, comprehensive legal services that protect our clients' interests and uphold the highest standards of professional ethics. With over three decades of active practice, we bring unmatched experience and dedication to every matter we handle.
+              At UGOO UZOHO & COMPANY, our mission is to provide trusted, comprehensive legal services that protect our clients' interests and uphold the highest standards of professional ethics. With over three decades of active practice, we bring unmatched experience and dedication to every matter we handle.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-8 text-sm sm:text-base">

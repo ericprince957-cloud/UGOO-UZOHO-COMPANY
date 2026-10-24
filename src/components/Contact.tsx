@@ -112,7 +112,7 @@ export default function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="UGOO UZOHO + COMPANY Office Location"
+                title="UGOO UZOHO & COMPANY Office Location"
                 className="grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>

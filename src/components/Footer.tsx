@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
             <h3 className="font-playfair text-lg sm:text-xl font-bold gold-gradient mb-2">
-              UGOO UZOHO + COMPANY
+              UGOO UZOHO & COMPANY
             </h3>
             <p className="text-gold-400 text-xs tracking-widest uppercase mb-4">
               Barristers and Solicitors
@@ -54,7 +54,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-10 sm:mt-12 pt-8 border-t border-gold-800/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-xs text-center sm:text-left">
-            © {new Date().getFullYear()} UGOO UZOHO + COMPANY. All rights reserved.
+            © {new Date().getFullYear()} UGOO UZOHO & COMPANY. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
             Barristers and Solicitors | Est. 1993

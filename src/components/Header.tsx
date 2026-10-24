@@ -51,7 +51,7 @@ export default function Header() {
           {/* Brand */}
           <Link to="/" className="flex flex-col min-w-0">
             <span className="font-playfair text-lg sm:text-xl font-bold tracking-wide gold-gradient truncate">
-              UGOO UZOHO + COMPANY
+              UGOO UZOHO & COMPANY
             </span>
             <span className="text-[10px] text-gold-400 tracking-widest uppercase hidden sm:block">
               Barristers and Solicitors

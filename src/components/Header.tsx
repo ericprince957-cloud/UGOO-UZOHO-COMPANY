@@ -49,11 +49,11 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center min-w-0">
+          <Link to="/" className="flex items-center flex-shrink-0">
             <img
               src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/0f43f163-1874-47a7-b777-212967e9c8ae.png"
               alt="UGOO UZOHO & COMPANY"
-              className="h-12 sm:h-16 w-auto object-contain"
+              className="h-10 sm:h-14 md:h-16 w-auto max-w-[180px] sm:max-w-[240px] md:max-w-[280px] object-contain"
             />
           </Link>
 

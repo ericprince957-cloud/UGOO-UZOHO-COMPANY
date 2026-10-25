@@ -60,7 +60,7 @@ export default function Footer() {
             Barristers and Solicitors | Est. 1993
           </p>
           <a
-            href="https://wa.me/2347084547988"
+            href="https://wa.me/2347084547988?text=Hello%20Vector%20Codes%2C%20I%20saw%20your%20work%20on%20the%20UGOO%20UZOHO%20%26%20COMPANY%20website.%20I%27d%20like%20to%20discuss%20a%20project."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 border border-green-500/40 rounded-lg hover:bg-green-500/10 transition-all duration-200 touch-target"

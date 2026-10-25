@@ -8,6 +8,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Gallery from './pages/Gallery';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 function HomePage() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
         <Footer />
         <WhatsAppButton />

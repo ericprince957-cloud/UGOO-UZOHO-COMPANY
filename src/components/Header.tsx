@@ -84,6 +84,12 @@ export default function Header() {
             >
               Gallery
             </Link>
+            <Link
+              to="/blog"
+              className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors duration-200"
+            >
+              Insights
+            </Link>
             <a
               href="/#contact"
               className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors duration-200"
@@ -124,6 +130,7 @@ export default function Header() {
               <a href="/#about" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">About</a>
               <a href="/#practice-areas" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Practice Areas</a>
               <Link to="/gallery" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Gallery</Link>
+              <Link to="/blog" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Insights</Link>
               <a href="/#contact" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Contact</a>
               <a
                 href="https://wa.me/2348033041489?text=Hello%2C%20I%20would%20like%20to%20schedule%20an%20NDA%20meeting."

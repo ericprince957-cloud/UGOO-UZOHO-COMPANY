@@ -25,6 +25,19 @@ const galleryImages = [
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/bd7e31d5-418c-4117-bbb0-59c90610750d.jpg",
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/d15ed220-4065-4935-b429-5688b3f9a002.jpg",
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/bcf1bbe4-dd14-4575-96fc-e4bb24e366b1.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/11bcc047-8f7f-443f-b1f5-4b7e699eb6ed.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/155592c1-0d0a-49fe-806f-20be91a5c845.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/2035e851-f019-4d4d-a191-d386ee8f6e04.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/c5ce8e86-aa77-43bd-a077-1d8653ac6b87.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/5b258f46-9767-4c50-8892-2a8725022ba1.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/5ee00756-25ac-48a8-abff-3b2924026a48.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/3db13555-4ec9-469a-a408-96d680d4d60a.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/41f07092-d0e1-4785-a65c-c81ef839eb6c.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/4a8005e0-4417-4ff6-b177-defca9667ce7.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/d31367bf-2f32-44e7-a5a4-8a49d3db8a0e.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/78c23965-6335-44fa-bb75-aa8c6a220d39.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/84ae6df3-15b7-4c35-b8c1-dc6b3913f55b.jpg",
+  "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/2e330bcf-db3a-442d-8b88-e942eb4c5d15.jpg",
 ];
 
 export default function Gallery() {

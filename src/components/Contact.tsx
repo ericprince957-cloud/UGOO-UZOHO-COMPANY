@@ -105,7 +105,7 @@ export default function Contact() {
           <div className="relative gpu-accelerated">
             <div className="bg-[#111111] rounded-xl overflow-hidden border border-gold-800/20 h-full min-h-[300px] sm:min-h-[400px]">
               <iframe
-                src="https://maps.google.com/maps?q=Rex%20Chambers%2C%20Suit%203%2C%20Salem%20Plaza%2C%20No.%20244%20Old%20Aba%20Road%20%28Town%20Hall%29%2C%20Oyigbo%2C%20Port%20Harcourt%2C%20Rivers%20State%2C%20Nigeria&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=V4FQ%2BMRP%2C%20Port%20Harcourt%20-%20Aba%20Old%20Rd%2C%20Oyigbo%2C%20Rivers%20State&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '300px' }}

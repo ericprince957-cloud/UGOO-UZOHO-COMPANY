@@ -38,8 +38,8 @@ export default function Footer() {
               <p>Oyigbo, Port Harcourt,</p>
               <p>Rivers State, Nigeria</p>
               <p className="pt-2">
-                <a href="mailto:info@ugoouzoho.com.ng" className="hover:text-gold-400 transition-colors">
-                  info@ugoouzoho.com.ng
+                <a href="mailto:ugooouzoho@gmail.com" className="hover:text-gold-400 transition-colors">
+                  ugooouzoho@gmail.com
                 </a>
               </p>
               <p>

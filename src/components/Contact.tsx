@@ -48,8 +48,8 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-gold-400 font-semibold mb-1 text-sm sm:text-base">Email</h3>
-                  <a href="mailto:info@ugoouzoho.com.ng" className="text-gray-300 hover:text-gold-400 transition-colors text-sm sm:text-base">
-                    info@ugoouzoho.com.ng
+                  <a href="mailto:ugooouzoho@gmail.com" className="text-gray-300 hover:text-gold-400 transition-colors text-sm sm:text-base">
+                    ugooouzoho@gmail.com
                   </a>
                 </div>
               </div>

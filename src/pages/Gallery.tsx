@@ -38,10 +38,27 @@ const galleryImages = [
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/78c23965-6335-44fa-bb75-aa8c6a220d39.jpg",
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/84ae6df3-15b7-4c35-b8c1-dc6b3913f55b.jpg",
   "https://i.supaimg.com/44a76b26-2555-4351-81a0-26a85156346b/2e330bcf-db3a-442d-8b88-e942eb4c5d15.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/ed1c6b32-88ff-4602-b695-944bbb99ee9f.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/fc623c17-ecbc-42c7-bd8e-045fb61eaa17.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/dab6d183-1443-4107-b64b-e126cb604b3a.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/dbc6d16c-54f8-4c6c-9a65-dd10aa16d14d.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/41d7b1cf-5574-4a45-83b7-f159616f0902.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/deee04b9-56c8-4d42-884b-78ce712e6395.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/c282ad76-0633-413e-979c-4007809237c4.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/71cdca30-445e-46a2-b340-97761420ff41.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/eb3b86b3-3d29-4c23-9dd2-05d54e786a1a.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/e2f4cae3-b2bb-416c-8ec8-826666299b46.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/e90fc87d-7bd8-4130-b734-37db211d2743.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/96ee82ad-6ea7-48ed-9720-e4501147623b.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/5b00f729-345e-4123-b121-6969ec378d65.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/28ede0a6-9c81-498b-88c5-156c83617050.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/99a27a51-5bba-47db-b493-c6965c17ac42.jpg",
+  "https://i.supaimg.com/1de2246f-c5c0-49ee-90b4-e66f91808884/79c9324d-e826-4887-aa53-d2222083b8c6.jpg",
 ];
 
 export default function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -54,6 +71,24 @@ export default function Gallery() {
     if (lightboxIndex !== null) {
       setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
     }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || lightboxIndex === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const threshold = 50;
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX < 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    setTouchStartX(null);
   };
 
   return (
@@ -103,7 +138,7 @@ export default function Gallery() {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center lightbox-overlay" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center lightbox-overlay" onClick={closeLightbox} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <div className="absolute inset-0 bg-black/95 backdrop-blur-sm" />
           
           {/* Close button */}

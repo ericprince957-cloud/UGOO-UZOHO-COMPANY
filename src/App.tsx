@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import PracticeAreas from './components/PracticeAreas';
 import Contact from './components/Contact';
+import QuoteOfTheDay from './components/QuoteOfTheDay';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Gallery from './pages/Gallery';
@@ -17,6 +18,7 @@ function HomePage() {
       <Hero />
       <About />
       <PracticeAreas />
+      <QuoteOfTheDay />
       <Contact />
     </>
   );

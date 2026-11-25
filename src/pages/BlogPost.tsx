@@ -1,10 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPostBySlug } from '../content/posts';
+import { getPostBySlug, type Post } from '../content/posts';
+import { supabase } from '../lib/supabase';
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const staticPost = slug ? getPostBySlug(slug) : undefined;
+  const [managedPost, setManagedPost] = useState<Post | undefined>(undefined);
+
+  useEffect(() => {
+    if (!slug || staticPost || !supabase) return;
+    let active = true;
+    supabase.from('blog_posts')
+      .select('slug, title, excerpt, body, published_at, created_at')
+      .eq('slug', slug)
+      .eq('is_published', true)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (!active || error || !data) return;
+        setManagedPost({
+          slug: data.slug,
+          title: data.title,
+          excerpt: data.excerpt,
+          date: (data.published_at || data.created_at).slice(0, 10),
+          body: (data.body || '').split(/\n{2,}/).filter(Boolean).map((text) => ({ type: 'p' as const, text })),
+        });
+      });
+    return () => { active = false; };
+  }, [slug, staticPost]);
+
+  const post = staticPost || managedPost;
 
   useEffect(() => {
     if (post) document.title = `${post.title} | UGOO UZOHO & COMPANY`;

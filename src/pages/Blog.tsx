@@ -1,14 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { posts } from '../content/posts';
+import { supabase } from '../lib/supabase';
+
+type ManagedPost = { slug: string; title: string; date: string; excerpt: string };
 
 export default function Blog() {
+  const [managedPosts, setManagedPosts] = useState<ManagedPost[]>([]);
+  useEffect(() => {
+    if (!supabase) return;
+    let active = true;
+    supabase.from('blog_posts')
+      .select('slug, title, excerpt, published_at, created_at')
+      .eq('is_published', true)
+      .order('published_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!active || error || !data) return;
+        setManagedPosts(data.map((item) => ({
+          slug: item.slug,
+          title: item.title,
+          excerpt: item.excerpt,
+          date: (item.published_at || item.created_at).slice(0, 10),
+        })));
+      });
+    return () => { active = false; };
+  }, []);
+
   useEffect(() => {
     document.title = 'Insights | UGOO UZOHO & COMPANY';
     return () => { document.title = 'UGOO UZOHO & COMPANY | Barristers and Solicitors - Trusted Legal Excellence in Nigeria'; };
   }, []);
 
-  const sorted = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const sorted = [...posts, ...managedPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] pt-24 pb-20">

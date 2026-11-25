@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 const galleryImages = [
   "https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/1ed1e5f0-6c25-4153-b438-2ea6fcee624c.jpg",
@@ -57,6 +58,22 @@ const galleryImages = [
 ];
 
 export default function Gallery() {
+  const [images, setImages] = useState<string[]>(galleryImages);
+  useEffect(() => {
+    if (!supabase) return;
+    let active = true;
+    supabase.from('gallery_images')
+      .select('storage_path')
+      .eq('is_published', true)
+      .order('sort_order')
+      .then(({ data, error }) => {
+        if (!active || error || !data?.length) return;
+        const managed = data.map((item) => supabase.storage.from('law-firm-gallery').getPublicUrl(item.storage_path).data.publicUrl);
+        setImages([...managed, ...galleryImages]);
+      });
+    return () => { active = false; };
+  }, []);
+
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
@@ -64,12 +81,12 @@ export default function Gallery() {
   const closeLightbox = () => setLightboxIndex(null);
   const nextImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % galleryImages.length);
+      setLightboxIndex((lightboxIndex + 1) % images.length);
     }
   };
   const prevImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
+      setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
     }
   };
 
@@ -111,7 +128,7 @@ export default function Gallery() {
       {/* Gallery Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="masonry-grid">
-          {galleryImages.map((img, index) => (
+          {images.map((img, index) => (
             <div
               key={index}
               className="masonry-item cursor-pointer group gpu-accelerated"
@@ -172,13 +189,13 @@ export default function Gallery() {
           {/* Image */}
           <div className="relative max-w-5xl max-h-[85vh] mx-4" onClick={(e) => e.stopPropagation()}>
             <img
-              src={galleryImages[lightboxIndex]}
+              src={images[lightboxIndex]}
               alt={`Gallery image ${lightboxIndex + 1}`}
               className="max-w-full max-h-[85vh] object-contain rounded-lg gpu-accelerated"
               decoding="async"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full">
-              <span className="text-white text-sm">{lightboxIndex + 1} / {galleryImages.length}</span>
+              <span className="text-white text-sm">{lightboxIndex + 1} / {images.length}</span>
             </div>
           </div>
         </div>

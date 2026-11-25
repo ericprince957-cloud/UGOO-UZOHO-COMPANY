@@ -53,3 +53,33 @@ export async function getPublishedLegalQuotes(): Promise<LegalQuote[]> {
     return data;
   } catch { return []; }
 }
+
+
+export async function getSiteContent<T extends Record<string, unknown>>(contentKey: string): Promise<Partial<T> | null> {
+  const client = getCmsClient();
+  if (!client) return null;
+  try {
+    const { data, error } = await client.from('site_content').select('content_value').eq('content_key', contentKey).maybeSingle();
+    if (error || !data || !data.content_value || typeof data.content_value !== 'object' || Array.isArray(data.content_value)) return null;
+    return data.content_value as Partial<T>;
+  } catch { return null; }
+}
+
+export async function recordPageView(pagePath: string): Promise<void> {
+  const client = getCmsClient();
+  if (!client || typeof window === 'undefined') return;
+  try {
+    const storageKey = 'ugoo-analytics-visitor';
+    let visitorId = window.sessionStorage.getItem(storageKey);
+    if (!visitorId) {
+      visitorId = crypto.randomUUID();
+      window.sessionStorage.setItem(storageKey, visitorId);
+    }
+    const referrer = document.referrer ? new URL(document.referrer).origin : '';
+    await client.from('analytics_events').insert({
+      visitor_id: visitorId,
+      page_path: pagePath.slice(0, 500),
+      referrer: referrer.slice(0, 2000),
+    });
+  } catch { /* Analytics must never interrupt public page rendering. */ }
+}

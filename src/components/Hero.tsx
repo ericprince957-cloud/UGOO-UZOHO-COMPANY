@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';
 
 export default function Hero() {
   const [showModal, setShowModal] = useState(false);
@@ -23,22 +23,22 @@ export default function Hero() {
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-gold-500/30 bg-gold-500/5 mb-6 sm:mb-8">
               <span className="w-2 h-2 bg-gold-400 rounded-full mr-2 animate-pulse" />
               <span className="text-xs sm:text-sm text-gold-400 tracking-wider uppercase">
-                Since 1993 — Trusted Legal Practice
+                {content.eyebrow}
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="font-playfair text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6">
-              <span className="gold-gradient">Trusted Legal Excellence.</span>
+              <span className="gold-gradient">{content.headline1}</span>
               <br />
-              <span className="text-white">Justice Service Delivered</span>
+              <span className="text-white">{content.headline2}</span>
               <br />
-              <span className="text-gray-300">with Integrity.</span>
+              <span className="text-gray-300">{content.headline3}</span>
             </h1>
 
             {/* Subtext */}
             <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-              Operating in Oyigbo, Port Harcourt, and indeed all over Nigeria... providing trusted legal services and representation since 1993.
+              {content.description}
             </p>
 
             {/* CTA Button */}
@@ -46,7 +46,7 @@ export default function Hero() {
               onClick={() => setShowModal(true)}
               className="group relative inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-black font-bold text-base sm:text-lg rounded-lg hover:from-gold-400 hover:to-gold-500 transition-all duration-200 shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40 touch-target gpu-accelerated"
             >
-              <span>Set Up NDA Meeting</span>
+              <span>{content.ctaLabel}</span>
               <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

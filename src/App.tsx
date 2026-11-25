@@ -26,10 +26,17 @@ function HomePage() {
   );
 }
 
-function PageViewTracker() {\n  const location = useLocation();\n  useEffect(() => { void recordPageView(location.pathname); }, [location.pathname]);\n  return null;\n}\n\nfunction App() {
+function PageViewTracker() {
+  const location = useLocation();
+  useEffect(() => { void recordPageView(location.pathname); }, [location.pathname]);
+  return null;
+}
+
+function App() {
   return (
     <Router>
-      <Analytics />\n      <PageViewTracker />
+      <Analytics />
+      <PageViewTracker />
       <div className="min-h-screen bg-[#0a0a0a] text-white">
         <Header />
         <Routes>

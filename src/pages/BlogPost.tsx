@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getPublishedBlogPostBySlug } from '../lib/cms';
 import { Link, useParams } from 'react-router-dom';
 import { getPostBySlug } from '../content/posts';
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const [cmsPost, setCmsPost] = useState(() => slug ? getPostBySlug(slug) : undefined);
+  useEffect(() => { let active = true; if (slug) getPublishedBlogPostBySlug(slug).then((item) => { if (active && item) setCmsPost(item); else if (active) setCmsPost(getPostBySlug(slug)); }); return () => { active = false; }; }, [slug]);
+  const post = cmsPost;
 
   useEffect(() => {
     if (post) document.title = `${post.title} | UGOO UZOHO & COMPANY`;

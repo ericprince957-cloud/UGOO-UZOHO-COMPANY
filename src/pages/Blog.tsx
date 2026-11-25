@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getPublishedBlogPosts } from '../lib/cms';
 import { Link } from 'react-router-dom';
 import { posts } from '../content/posts';
 
@@ -8,7 +9,9 @@ export default function Blog() {
     return () => { document.title = 'UGOO UZOHO & COMPANY | Barristers and Solicitors - Trusted Legal Excellence in Nigeria'; };
   }, []);
 
-  const sorted = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const [cmsPosts, setCmsPosts] = useState(posts);
+  useEffect(() => { let active = true; getPublishedBlogPosts().then((items) => { if (active && items.length) setCmsPosts(items); }); return () => { active = false; }; }, []);
+  const sorted = [...cmsPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] pt-24 pb-20">

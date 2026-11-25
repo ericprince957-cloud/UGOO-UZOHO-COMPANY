@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
@@ -12,7 +13,8 @@ import PageViewTracker from './components/PageViewTracker';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
-import Admin from './pages/Admin';
+
+const Admin = lazy(() => import('./pages/Admin'));
 
 function HomePage() {
   return (
@@ -48,7 +50,14 @@ function App() {
       <Analytics />
       <PageViewTracker />
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<div className="min-h-screen bg-[#080808] text-gold-400 flex items-center justify-center">Loading secure dashboard…</div>}>
+              <Admin />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<PublicLayout />} />
       </Routes>
     </Router>

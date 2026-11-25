@@ -1,7 +1,26 @@
-import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';
+import { useEffect, useState } from 'react';
+import { getSiteContent } from '../lib/cms';
+
+type HeroContent = { eyebrow: string; headline1: string; headline2: string; headline3: string; description: string; ctaLabel: string };
+const defaultHero: HeroContent = {
+  eyebrow: 'Since 1993 — Trusted Legal Practice',
+  headline1: 'Trusted Legal Excellence.',
+  headline2: 'Justice Service Delivered',
+  headline3: 'with Integrity.',
+  description: 'Operating in Oyigbo, Port Harcourt, and indeed all over Nigeria... providing trusted legal services and representation since 1993.',
+  ctaLabel: 'Set Up NDA Meeting',
+};
 
 export default function Hero() {
   const [showModal, setShowModal] = useState(false);
+  const [content, setContent] = useState<HeroContent>(defaultHero);
+  useEffect(() => {
+    let active = true;
+    getSiteContent<HeroContent>('homepage.hero').then((value) => {
+      if (active && value) setContent({ ...defaultHero, ...value });
+    });
+    return () => { active = false; };
+  }, []);
 
   return (
     <>

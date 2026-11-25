@@ -1,4 +1,4 @@
-export default function About() {
+import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';\n\ntype AboutContent = { principalName: string; principalAlias: string; credentials: string; mission: string; commitment: string };\nconst defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', principalAlias: '(aka Ugoo Uzoho)', credentials: '{content.credentials}', mission: "{content.mission}", commitment: '{content.commitment}' };\n\nexport default function About() {\n  const [content, setContent] = useState<AboutContent>(defaultAbout);\n  useEffect(() => { let active = true; getSiteContent<AboutContent>(\'homepage.about\').then((value) => { if (active && value) setContent({ ...defaultAbout, ...value }); }); return () => { active = false; }; }, []);
   return (
     <section id="about" className="relative py-16 sm:py-28 bg-[#0a0a0a]">
       {/* Decorative elements */}
@@ -32,7 +32,7 @@ export default function About() {
             <h2 className="font-playfair text-2xl sm:text-4xl font-bold text-white mb-2">
               Ugochukwu Emeka Uzoho
             </h2>
-            <p className="text-gold-400 text-sm mb-2 italic">(aka Ugoo Uzoho)</p>
+            <p className="text-gold-400 text-sm mb-2 italic">{content.principalAlias}</p>
             <p className="text-gold-300 text-sm font-medium mb-6 border-l-2 border-gold-500 pl-3">
               Called to Nigerian Bar in December 1993. Active and uninterrupted Law Practice since.
             </p>

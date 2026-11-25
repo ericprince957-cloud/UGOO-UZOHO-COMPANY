@@ -55,7 +55,7 @@ export async function getPublishedLegalQuotes(): Promise<LegalQuote[]> {
 }
 
 
-export async function getSiteContent<T extends Record<string, unknown>>(contentKey: string): Promise<Partial<T> | null> {
+export async function getSiteContent<T extends object>(contentKey: string): Promise<Partial<T> | null> {
   const client = getCmsClient();
   if (!client) return null;
   try {

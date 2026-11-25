@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';
+import { useEffect, useState } from 'react';
+import { getSiteContent } from '../lib/cms';
 
 const practiceAreas = [
   "Company And Corporate Matters",
@@ -27,7 +28,18 @@ const practiceAreas = [
 
 export default function PracticeAreas() {
   const [showAll, setShowAll] = useState(false);
-  const displayedAreas = showAll ? practiceAreas : practiceAreas.slice(0, 12);
+  const [areas, setAreas] = useState(practiceAreas);
+  useEffect(() => {
+    let active = true;
+    getSiteContent<{ items: string[] }>('homepage.practice_areas').then((value) => {
+      if (active && Array.isArray(value?.items) && value.items.length) {
+        const validItems = value.items.filter((item): item is string => typeof item === 'string' && item.trim().length > 0);
+        if (validItems.length) setAreas(validItems);
+      }
+    });
+    return () => { active = false; };
+  }, []);
+  const displayedAreas = showAll ? areas : areas.slice(0, 12);
 
   return (
     <section id="practice-areas" className="relative py-20 sm:py-28 bg-[#0d0d0d]">

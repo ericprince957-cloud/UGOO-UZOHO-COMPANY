@@ -183,3 +183,154 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Accessible visual design layer
+   Presentation only: improves readability, focus visibility and touch comfort.
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+}
+
+p {
+  line-height: 1.75;
+}
+
+/* Small labels and secondary copy remain comfortably readable. */
+.text-xs {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.text-sm {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* A calmer, more legible reading measure for long-form content. */
+article p,
+article li {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #f3d77a;
+  outline-offset: 4px;
+  border-radius: 0.35rem;
+}
+
+/* Consistent, comfortable touch targets on phones and tablets. */
+button,
+a.touch-target {
+  min-height: 44px;
+}
+
+nav a {
+  line-height: 1.45;
+}
+
+/* More comfortable reading and scanning across the long homepage. */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+section > div[class*="max-w-7xl"] {
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  line-height: 1.2;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+/* Make cards feel consistent without adding visual noise. */
+[class*="rounded-xl"][class*="border"] {
+  border-color: rgba(212, 168, 67, 0.24);
+}
+
+a,
+button {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 180ms;
+  transition-timing-function: ease-out;
+}
+
+button:active,
+a[role="button"]:active {
+  transform: translateY(1px);
+}
+
+/* Prevent the fixed navigation from covering content on small screens. */
+@media (max-width: 767px) {
+  body {
+    font-size: 1rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.75rem;
+  }
+
+  article {
+    padding-bottom: 1.5rem;
+  }
+
+  .masonry-grid {
+    column-gap: 1rem;
+  }
+}
+
+/* Respect visitors who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

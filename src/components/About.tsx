@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getSiteContent } from '../lib/cms';
 
 type AboutContent = { principalName: string; principalAlias: string; credentials: string; mission: string; commitment: string };
-const defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', principalAlias: '(aka Ugoo Uzoho)', credentials: '{content.credentials}', mission: "{content.mission}", commitment: '{content.commitment}' };
+const defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', principalAlias: '(aka Ugoo Uzoho)', credentials: 'Called to Nigerian Bar in December 1993. Active and uninterrupted Law Practice since.', mission: "At UGOO UZOHO & COMPANY, our mission is to provide trusted, comprehensive legal services that protect our clients' interests and uphold the highest standards of professional ethics. With over three decades of active practice, we bring unmatched experience and dedication to every matter we handle.", commitment: 'We are committed to delivering justice with integrity, ensuring that every client receives personalized attention and strategic legal counsel tailored to their unique needs.' };
 
 export default function About() {
   const [content, setContent] = useState<AboutContent>(defaultAbout);
@@ -38,19 +38,19 @@ export default function About() {
             </div>
             
             <h2 className="font-playfair text-2xl sm:text-4xl font-bold text-white mb-2">
-              Ugochukwu Emeka Uzoho
+              {content.principalName}
             </h2>
             <p className="text-gold-400 text-sm mb-2 italic">{content.principalAlias}</p>
             <p className="text-gold-300 text-sm font-medium mb-6 border-l-2 border-gold-500 pl-3">
-              Called to Nigerian Bar in December 1993. Active and uninterrupted Law Practice since.
+              {content.credentials}
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
-              At UGOO UZOHO & COMPANY, our mission is to provide trusted, comprehensive legal services that protect our clients' interests and uphold the highest standards of professional ethics. With over three decades of active practice, we bring unmatched experience and dedication to every matter we handle.
+              {content.mission}
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-8 text-sm sm:text-base">
-              We are committed to delivering justice with integrity, ensuring that every client receives personalized attention and strategic legal counsel tailored to their unique needs.
+              {content.commitment}
             </p>
 
             {/* Metrics */}

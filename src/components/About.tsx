@@ -6,7 +6,7 @@ const defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', pri
 
 export default function About() {
   const [content, setContent] = useState<AboutContent>(defaultAbout);
-  useEffect(() => { let active = true; getSiteContent<AboutContent>(\'homepage.about\').then((value) => { if (active && value) setContent({ ...defaultAbout, ...value }); }); return () => { active = false; }; }, []);
+  useEffect(() => { let active = true; getSiteContent<AboutContent>('homepage.about').then((value) => { if (active && value) setContent({ ...defaultAbout, ...value }); }); return () => { active = false; }; }, []);
   return (
     <section id="about" className="relative py-16 sm:py-28 bg-[#0a0a0a]">
       {/* Decorative elements */}

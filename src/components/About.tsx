@@ -1,4 +1,12 @@
-import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';\n\ntype AboutContent = { principalName: string; principalAlias: string; credentials: string; mission: string; commitment: string };\nconst defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', principalAlias: '(aka Ugoo Uzoho)', credentials: '{content.credentials}', mission: "{content.mission}", commitment: '{content.commitment}' };\n\nexport default function About() {\n  const [content, setContent] = useState<AboutContent>(defaultAbout);\n  useEffect(() => { let active = true; getSiteContent<AboutContent>(\'homepage.about\').then((value) => { if (active && value) setContent({ ...defaultAbout, ...value }); }); return () => { active = false; }; }, []);
+import { useEffect, useState } from 'react';
+import { getSiteContent } from '../lib/cms';
+
+type AboutContent = { principalName: string; principalAlias: string; credentials: string; mission: string; commitment: string };
+const defaultAbout: AboutContent = { principalName: 'Ugochukwu Emeka Uzoho', principalAlias: '(aka Ugoo Uzoho)', credentials: '{content.credentials}', mission: "{content.mission}", commitment: '{content.commitment}' };
+
+export default function About() {
+  const [content, setContent] = useState<AboutContent>(defaultAbout);
+  useEffect(() => { let active = true; getSiteContent<AboutContent>(\'homepage.about\').then((value) => { if (active && value) setContent({ ...defaultAbout, ...value }); }); return () => { active = false; }; }, []);
   return (
     <section id="about" className="relative py-16 sm:py-28 bg-[#0a0a0a]">
       {/* Decorative elements */}

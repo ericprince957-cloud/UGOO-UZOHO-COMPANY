@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';\nimport { getSiteContent } from '../lib/cms';
 
 const practiceAreas = [
   "Company And Corporate Matters",
@@ -69,13 +69,13 @@ export default function PracticeAreas() {
         </div>
 
         {/* Show More Button */}
-        {!showAll && practiceAreas.length > 12 && (
+        {!showAll && areas.length > 12 && (
           <div className="text-center mt-8">
             <button
               onClick={() => setShowAll(true)}
               className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
             >
-              <span>Show All {practiceAreas.length} Practice Areas</span>
+              <span>Show All {areas.length} Practice Areas</span>
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>

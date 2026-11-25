@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { recordPageView } from './lib/cms';
 import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -24,10 +26,10 @@ function HomePage() {
   );
 }
 
-function App() {
+function PageViewTracker() {\n  const location = useLocation();\n  useEffect(() => { void recordPageView(location.pathname); }, [location.pathname]);\n  return null;\n}\n\nfunction App() {
   return (
     <Router>
-      <Analytics />
+      <Analytics />\n      <PageViewTracker />
       <div className="min-h-screen bg-[#0a0a0a] text-white">
         <Header />
         <Routes>

@@ -1,4 +1,6 @@
-import { quotes } from '../content/quotes';
+import { useEffect, useState } from 'react';
+import { quotes, type LegalQuote } from '../content/quotes';
+import { getPublishedLegalQuotes } from '../lib/cms';
 
 export default function QuoteOfTheDay() {
   // Rotate one quote per calendar day so the homepage is never static
@@ -6,7 +8,8 @@ export default function QuoteOfTheDay() {
   const dayOfYear = Math.floor(
     (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000
   );
-  const quote = quotes[dayOfYear % quotes.length];
+  const [quote, setQuote] = useState<LegalQuote | undefined>(quotes[dayOfYear % quotes.length]);
+  useEffect(() => { let active = true; getPublishedLegalQuotes().then((items) => { if (active && items.length) setQuote(items[dayOfYear % items.length]); }); return () => { active = false; }; }, [dayOfYear]);
 
   if (!quote) return null;
 

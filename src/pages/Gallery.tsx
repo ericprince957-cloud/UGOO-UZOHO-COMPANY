@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getPublishedGalleryImages } from '../lib/cms';
 import { Link } from 'react-router-dom';
 
 const galleryImages = [
@@ -57,6 +58,9 @@ const galleryImages = [
 ];
 
 export default function Gallery() {
+  const [cmsImages, setCmsImages] = useState<{ src: string; alt: string }[]>([]);
+  useEffect(() => { let active = true; getPublishedGalleryImages().then((items) => { if (active && items.length) setCmsImages(items); }); return () => { active = false; }; }, []);
+  const allImages = [...galleryImages.map((src, index) => ({ src, alt: `Gallery image ${index + 1}` })), ...cmsImages];
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
@@ -64,12 +68,12 @@ export default function Gallery() {
   const closeLightbox = () => setLightboxIndex(null);
   const nextImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % galleryImages.length);
+      setLightboxIndex((lightboxIndex + 1) % allImages.length);
     }
   };
   const prevImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
+      setLightboxIndex((lightboxIndex - 1 + allImages.length) % allImages.length);
     }
   };
 
@@ -111,7 +115,7 @@ export default function Gallery() {
       {/* Gallery Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="masonry-grid">
-          {galleryImages.map((img, index) => (
+          {allImages.map((img, index) => (
             <div
               key={index}
               className="masonry-item cursor-pointer group gpu-accelerated"
@@ -119,8 +123,8 @@ export default function Gallery() {
             >
               <div className="relative rounded-lg overflow-hidden border border-gold-800/20 hover:border-gold-500/40 transition-all duration-300">
                 <img
-                  src={img}
-                  alt={`Gallery image ${index + 1}`}
+                  src={img.src}
+                  alt={img.alt}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
@@ -172,13 +176,13 @@ export default function Gallery() {
           {/* Image */}
           <div className="relative max-w-5xl max-h-[85vh] mx-4" onClick={(e) => e.stopPropagation()}>
             <img
-              src={galleryImages[lightboxIndex]}
-              alt={`Gallery image ${lightboxIndex + 1}`}
+              src={allImages[lightboxIndex].src}
+              alt={allImages[lightboxIndex].alt}
               className="max-w-full max-h-[85vh] object-contain rounded-lg gpu-accelerated"
               decoding="async"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full">
-              <span className="text-white text-sm">{lightboxIndex + 1} / {galleryImages.length}</span>
+              <span className="text-white text-sm">{lightboxIndex + 1} / {allImages.length}</span>
             </div>
           </div>
         </div>

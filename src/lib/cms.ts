@@ -24,7 +24,7 @@ export async function getPublishedGalleryImages(): Promise<PublishedGalleryImage
   const client = getCmsClient();
   if (!client) return [];
   try {
-    const { data, error } = await client.from('gallery_images').select('storage_path,alt_text').eq('is_published', true).order('sort_order', { ascending: true });
+    const { data, error } = await client.from('gallery_images').select('storage_path,alt_text').eq('is_published', true).order('sort_order', { ascending: false }).order('created_at', { ascending: false });
     if (error || !data) return [];
     return data.map((item) => ({ src: client.storage.from('law-firm-gallery').getPublicUrl(item.storage_path).data.publicUrl, alt: item.alt_text || 'Law firm gallery image' }));
   } catch { return []; }

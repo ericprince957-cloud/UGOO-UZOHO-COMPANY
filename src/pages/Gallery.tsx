@@ -62,7 +62,7 @@ const galleryImages = [
 export default function Gallery() {
   const [cmsImages, setCmsImages] = useState<{ src: string; alt: string }[]>([]);
   useEffect(() => { let active = true; getPublishedGalleryImages().then((items) => { if (active && items.length) setCmsImages(items); }); return () => { active = false; }; }, []);
-  const allImages = [...galleryImages.map((src, index) => ({ src, alt: `Gallery image ${index + 1}` })), ...cmsImages];
+  const allImages = [...cmsImages, ...galleryImages.map((src, index) => ({ src, alt: `Gallery image ${index + 1}` }))];
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 

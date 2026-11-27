@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { getPostBySlug } from '../content/posts';
 
 export default function BlogPost() {
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
   useEffect(() => {

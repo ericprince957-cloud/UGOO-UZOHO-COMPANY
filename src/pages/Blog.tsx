@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { posts } from '../content/posts';
 
 export default function Blog() {
@@ -52,7 +54,7 @@ export default function Blog() {
                 Contact Us
               </a>
               <Link
-                to="/"
+                href="/"
                 className="px-6 py-3 border border-gold-500/40 text-gold-400 font-medium text-sm rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
               >
                 Back to Home
@@ -64,7 +66,7 @@ export default function Blog() {
             {sorted.map((post) => (
               <Link
                 key={post.slug}
-                to={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="group bg-[#111111] rounded-xl p-6 border border-gold-800/20 hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-1 gpu-accelerated flex flex-col"
               >
                 <time className="text-gold-400 text-xs tracking-wider uppercase mb-3">{post.date}</time>

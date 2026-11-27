@@ -1,9 +1,13 @@
+'use client';
+
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { getPostBySlug } from '../content/posts';
 
 export default function BlogPost() {
-  const { slug } = useParams();
+  const params = useParams<{ slug: string }>();
+  const slug = params?.slug;
   const post = slug ? getPostBySlug(slug) : undefined;
 
   useEffect(() => {
@@ -17,7 +21,7 @@ export default function BlogPost() {
           <h1 className="font-playfair text-2xl sm:text-3xl font-bold gold-gradient mb-4">Article Not Found</h1>
           <p className="text-gray-400 mb-8">The article you are looking for does not exist or has been removed.</p>
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
           >
             Back to Insights
@@ -31,7 +35,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-[#0a0a0a] pt-24 pb-20">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <Link to="/blog" className="text-gold-400 text-sm inline-flex items-center hover:text-gold-300 transition-colors mb-8 touch-target">
+        <Link href="/blog" className="text-gold-400 text-sm inline-flex items-center hover:text-gold-300 transition-colors mb-8 touch-target">
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>

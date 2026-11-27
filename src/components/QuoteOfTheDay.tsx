@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { quotes, type LegalQuote } from '../content/quotes';
 import { getPublishedLegalQuotes } from '../lib/cms';

@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { getPublishedGalleryImages } from '../lib/cms';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const galleryImages = [
   "https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/1ed1e5f0-6c25-4153-b438-2ea6fcee624c.jpg",
@@ -191,7 +193,7 @@ export default function Gallery() {
       {/* Back to Home */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center px-6 py-3 border border-gold-500/40 text-gold-400 rounded-lg hover:bg-gold-500/10 transition-all duration-200 touch-target"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

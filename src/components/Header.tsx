@@ -1,10 +1,13 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const scrollRef = useRef(false);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -49,7 +52,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Brand */}
-          <Link to="/" className="flex flex-col min-w-0">
+          <Link href="/" className="flex flex-col min-w-0">
             <span className="font-playfair text-lg sm:text-xl font-bold tracking-wide gold-gradient truncate">
               UGOO UZOHO & COMPANY
             </span>
@@ -61,7 +64,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              to="/"
+              href="/"
               className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors duration-200"
             >
               Home
@@ -79,13 +82,13 @@ export default function Header() {
               Practice Areas
             </a>
             <Link
-              to="/gallery"
+              href="/gallery"
               className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors duration-200"
             >
               Gallery
             </Link>
             <Link
-              to="/blog"
+              href="/blog"
               className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors duration-200"
             >
               Insights
@@ -126,11 +129,11 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-[#0a0a0a] border-t border-gold-800/30 animate-slide-up">
             <nav className="flex flex-col px-4 py-4 space-y-1">
-              <Link to="/" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Home</Link>
+              <Link href="/" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Home</Link>
               <a href="/#about" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">About</a>
               <a href="/#practice-areas" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Practice Areas</a>
-              <Link to="/gallery" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Gallery</Link>
-              <Link to="/blog" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Insights</Link>
+              <Link href="/gallery" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Gallery</Link>
+              <Link href="/blog" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Insights</Link>
               <a href="/#contact" className="text-gray-300 hover:text-gold-400 py-3 px-2 rounded-lg hover:bg-gold-500/5 transition-colors touch-target flex items-center">Contact</a>
               <a
                 href="https://wa.me/2348033041489?text=Hello%2C%20I%20would%20like%20to%20schedule%20an%20NDA%20meeting."
